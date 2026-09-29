@@ -1,4 +1,4 @@
-export interface IAppointment {
+export interface Appointment {
     id: number
     especialidad: string
     especialista: string

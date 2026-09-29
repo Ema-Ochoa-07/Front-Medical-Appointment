@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { AppointmentService } from '../../services/appointment.service';
-import { IAppointment } from '../../interfaces/appointment.interface';
+import { Appointment } from '../../interfaces/appointment.interface';
 import { JsonPipe } from '@angular/common';
 
 @Component({
@@ -9,9 +9,9 @@ import { JsonPipe } from '@angular/common';
   styleUrl: './appointment.css',
   templateUrl: './appointment.html',
 })
-export class Appointment {
+export class AppointmentComponent {
   
-  citas: IAppointment[] = []
+  citas: Appointment[] = []
 
   constructor( 
     private changeDetectorRef: ChangeDetectorRef,

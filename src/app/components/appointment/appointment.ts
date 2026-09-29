@@ -12,6 +12,7 @@ import { JsonPipe } from '@angular/common';
 export class AppointmentComponent {
   
   citas: Appointment[] = []
+  archivoSeleccionado: File | null = null
 
   constructor( 
     private changeDetectorRef: ChangeDetectorRef,
@@ -27,5 +28,15 @@ export class AppointmentComponent {
           console.error(error)
         }
       })
+    }
+
+
+    seleccionarArchivo(event: Event){
+      const input = event.target as HTMLInputElement
+
+      if( input.files && input.files.length > 0 ){
+        this.archivoSeleccionado = input.files[0]
+        console.log(this.archivoSeleccionado)
+      }
     }
 }

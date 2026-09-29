@@ -11,7 +11,7 @@
 
             <input (change)="seleccionarArchivo($event)" type="file" class="form-control" accept=".xlsx, .xls, .csv">
 
-            <button type="button" class="btn btn-primary mt-3">Procesar archivo</button>
+            <button (click)="procesarArchivo()" type="button" class="btn btn-primary mt-3">Procesar archivo</button>
         </div>
     </div>
 

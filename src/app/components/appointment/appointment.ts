@@ -39,4 +39,15 @@ export class AppointmentComponent {
         console.log(this.archivoSeleccionado)
       }
     }
+
+    procesarArchivo(){
+      console.log("Procesando archivo.....")
+      if(this.archivoSeleccionado){
+        const formData = new FormData()
+
+        formData.append('file', this.archivoSeleccionado)
+        console.log(formData.get('file'))
+
+      }
+    }
 }

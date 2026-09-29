@@ -11,7 +11,16 @@
 
             <input (change)="seleccionarArchivo($event)" type="file" class="form-control" accept=".xlsx, .xls, .csv">
 
-            <button (click)="procesarArchivo()" type="button" class="btn btn-primary mt-3">Procesar archivo</button>
+            <button (click)="procesarArchivo()" type="button" class="btn btn-primary mt-3">Cargar citas</button>
+
+            <!-- Mensaje mientras se procesa el archivo -->
+             @if (procesandoArchivo){
+                <div class="alert alert-info mt-3">
+                    Procesando archivo, por favor espere...
+                </div>
+             }
+
+
         </div>
     </div>
 

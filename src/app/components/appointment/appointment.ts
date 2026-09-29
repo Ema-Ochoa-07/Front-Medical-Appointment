@@ -13,6 +13,8 @@ export class AppointmentComponent {
   
   citas: Appointment[] = []
   archivoSeleccionado: File | null = null
+  procesandoArchivo = false
+
 
   constructor( 
     private changeDetectorRef: ChangeDetectorRef,
@@ -41,8 +43,12 @@ export class AppointmentComponent {
     }
 
     procesarArchivo(){
-      console.log("Procesando archivo.....")
+      //console.log("Procesando archivo.....")
+
       if(this.archivoSeleccionado){
+
+        this.procesandoArchivo = true
+
         const formData = new FormData()
 
         formData.append('file', this.archivoSeleccionado)

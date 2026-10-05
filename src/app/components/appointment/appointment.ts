@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 import { AppointmentService } from '../../services/appointment.service';
 import { Appointment } from '../../interfaces/appointment.interface';
 import { JsonPipe } from '@angular/common';
+import { error } from 'node:console';
 
 @Component({
   imports: [JsonPipe],
@@ -52,8 +53,16 @@ export class AppointmentComponent {
         const formData = new FormData()
 
         formData.append('file', this.archivoSeleccionado)
-        console.log(formData.get('file'))
+        //console.log(formData.get('file'))
 
+      this.appointmentService.procesandoArchivo(formData).subscribe({
+        next: (cargueCitas) =>{
+          console.log('RESPUESTA',cargueCitas)
+        },
+        error:(error) =>{
+          console.log('ERROR', error)
+        }
+      })
       }
     }
 }

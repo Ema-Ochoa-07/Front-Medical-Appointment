@@ -17,4 +17,8 @@ export class AppointmentService {
     return this.http.get<Appointment[]>(`${this.baseUrl}/appointments`)
   }
 
+  procesandoArchivo(formData: FormData){
+    return this.http.post(`${this.baseUrl}/appointments/procesar`, formData)
+  }
+
 }

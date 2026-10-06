@@ -20,7 +20,46 @@
                 </div>
              }
 
+             @if (resulado_cargue){
+                <div class="alert alert-success mt-3">
 
+                <h5>IMPORTACIÓN FINALIZADA</h5>
+
+                <p>✅ Citas creadas: {{ resulado_cargue.citasCreadas }}</p>
+                <p>👤 Pacientes nuevos: {{ resulado_cargue.pacientesNuevos }}</p>
+                <p>♻️ Pacientes existentes: {{ resulado_cargue.pacientesExistentes }}</p>
+                <p>⚠️ Inconsistencias: {{ resulado_cargue.inconsistencias.length }}</p>
+                
+                </div>
+
+            @if (resulado_cargue.inconsistencias.length > 0) {
+
+            <h6>DETALLES DE INCONSISTENCIAS</h6>
+
+            @for (inconsistencia of resulado_cargue.inconsistencias; track inconsistencia.numero_documento) {
+
+                <div class="border rounded p-3 mb-2">
+
+                    <p>
+                        <strong>Documento:</strong>
+                        {{ inconsistencia.numero_documento }}
+                    </p>
+
+                    <p>
+                        <strong>Nombre en Excel:</strong>
+                        {{ inconsistencia.nombreExcel }}
+                    </p>
+
+                    <p>
+                        <strong>Nombre en sistema:</strong>
+                        {{ inconsistencia.nombreSistema }}
+                    </p>
+
+                </div>
+
+            }
+        }    
+            }
         </div>
     </div>
 

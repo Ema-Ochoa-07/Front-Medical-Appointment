@@ -15,6 +15,7 @@ export class AppointmentComponent {
   citas: Appointment[] = []
   archivoSeleccionado: File | null = null
   procesandoArchivo = false
+  resulado_cargue: any
 
 
   constructor( 
@@ -58,9 +59,17 @@ export class AppointmentComponent {
       this.appointmentService.procesandoArchivo(formData).subscribe({
         next: (cargueCitas) =>{
           console.log('RESPUESTA',cargueCitas)
+          this.resulado_cargue = cargueCitas
+
+          this.procesandoArchivo = false
+          this.changeDetectorRef.markForCheck()
+
         },
         error:(error) =>{
           console.log('ERROR', error)
+
+          this.procesandoArchivo = false
+          this.changeDetectorRef.markForCheck()
         }
       })
       }

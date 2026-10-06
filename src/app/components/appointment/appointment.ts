@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, ViewChild } from '@angular/core';
 import { AppointmentService } from '../../services/appointment.service';
 import { Appointment } from '../../interfaces/appointment.interface';
 import { JsonPipe } from '@angular/common';
@@ -12,11 +12,18 @@ import { error } from 'node:console';
 })
 export class AppointmentComponent {
   
+  //  GET APPOINTMENT
   citas: Appointment[] = []
+
+  //SELECCIONAR ARCHIVO
   archivoSeleccionado: File | null = null
+
+  //PROCESAR ARCHIVO
   procesandoArchivo = false
   resulado_cargue: any
 
+  //MOSTRA/OCULAR INCONSISTENCIAS
+  mostrarInconsistencias  = false
 
   constructor( 
     private changeDetectorRef: ChangeDetectorRef,
@@ -24,7 +31,7 @@ export class AppointmentComponent {
       
       this.appointmentService.getAppointments().subscribe({
         next: (appointments) =>{
-          console.log(appointments)
+          //console.log(appointments)
           this.citas = appointments
           this.changeDetectorRef.markForCheck();
         },
@@ -33,6 +40,9 @@ export class AppointmentComponent {
         }
       })
     }
+
+    //REFERENCIA PARA LIMPIAR LUEGO EL INPUT
+    @ViewChild('archivoInput') archivoInput!: ElementRef
 
 
     seleccionarArchivo(event: Event){
@@ -61,7 +71,11 @@ export class AppointmentComponent {
           console.log('RESPUESTA',cargueCitas)
           this.resulado_cargue = cargueCitas
 
-          this.procesandoArchivo = false
+          this.procesandoArchivo = false  
+               
+          this.archivoInput.nativeElement.value = ''
+          this.archivoSeleccionado = null
+
           this.changeDetectorRef.markForCheck()
 
         },
@@ -69,9 +83,17 @@ export class AppointmentComponent {
           console.log('ERROR', error)
 
           this.procesandoArchivo = false
+
+          this.archivoInput.nativeElement.value = ''
+          this.archivoSeleccionado = null
+
           this.changeDetectorRef.markForCheck()
         }
       })
       }
+    }
+
+    verInconsistencias(){
+      this.mostrarInconsistencias = !this.mostrarInconsistencias
     }
 }

@@ -9,9 +9,9 @@
 
             <p class="card-text">Selecciona el archivo</p>
 
-            <input (change)="seleccionarArchivo($event)" type="file" class="form-control" accept=".xlsx, .xls, .csv">
+            <input (change)="seleccionarArchivo($event)" #archivoInput type="file" class="form-control" accept=".xlsx, .xls, .csv">
 
-            <button (click)="procesarArchivo()" type="button" class="btn btn-primary mt-3">Cargar citas</button>
+            <button (click)="procesarArchivo()" [disabled]="!archivoSeleccionado || procesandoArchivo" type="button" class="btn btn-primary mt-3">Cargar citas</button>            
 
             <!-- Mensaje mientras se procesa el archivo -->
              @if (procesandoArchivo){
@@ -32,33 +32,45 @@
                 
                 </div>
 
-            @if (resulado_cargue.inconsistencias.length > 0) {
+                @if (resulado_cargue.inconsistencias.length > 0) {
 
-            <h6>DETALLES DE INCONSISTENCIAS</h6>
+                        <button (click)="verInconsistencias()" 
+                                type="button"
+                                class="btn  btn-inline-secondary sm"
+                                title="Ver Inconsistencias">
+                               <strong><mark> 👁️Detalle Inconsistencias 👁️</mark></strong> 
+                        </button>
 
-            @for (inconsistencia of resulado_cargue.inconsistencias; track inconsistencia.numero_documento) {
+                    @if(mostrarInconsistencias){
+                        <div class="mt-3">
 
-                <div class="border rounded p-3 mb-2">
+                            @for (inconsistencia of resulado_cargue.inconsistencias; track inconsistencia.numero_documento) {
 
-                    <p>
-                        <strong>Documento:</strong>
-                        {{ inconsistencia.numero_documento }}
-                    </p>
+                                <div class="border rounded p-3 mb-2">
 
-                    <p>
-                        <strong>Nombre en Excel:</strong>
-                        {{ inconsistencia.nombreExcel }}
-                    </p>
+                                    <p>
+                                        <strong>Documento:</strong>
+                                        {{ inconsistencia.numero_documento }}
+                                    </p>
 
-                    <p>
-                        <strong>Nombre en sistema:</strong>
-                        {{ inconsistencia.nombreSistema }}
-                    </p>
+                                    <p>
+                                        <strong>Nombre en Excel:</strong>
+                                        {{ inconsistencia.nombreExcel }}
+                                    </p>
 
-                </div>
+                                    <p>
+                                        <strong>Nombre en sistema:</strong>
+                                        {{ inconsistencia.nombreSistema }}
+                                    </p>
 
-            }
-        }    
+                                </div>
+
+                            }
+                        </div>
+                    }
+
+                    
+                }    
             }
         </div>
     </div>

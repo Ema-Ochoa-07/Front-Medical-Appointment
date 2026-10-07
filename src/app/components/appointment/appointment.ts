@@ -28,15 +28,19 @@ export class AppointmentComponent {
   constructor( 
     private changeDetectorRef: ChangeDetectorRef,
     private appointmentService: AppointmentService){
-      
+      this.listarCitas()
+    }
+
+    
+    listarCitas(){
       this.appointmentService.getAppointments().subscribe({
-        next: (appointments) =>{
-          //console.log(appointments)
-          this.citas = appointments
-          this.changeDetectorRef.markForCheck();
+        next:(appoitments) =>{
+          
+          this.citas = appoitments
+          this.changeDetectorRef.markForCheck()
         },
-        error: (error) =>{
-          console.error(error)
+        error:(error)=>{
+          console.log(error)
         }
       })
     }
@@ -76,6 +80,8 @@ export class AppointmentComponent {
           this.archivoInput.nativeElement.value = ''
           this.archivoSeleccionado = null
 
+          this.listarCitas()
+
           this.changeDetectorRef.markForCheck()
 
         },
@@ -96,4 +102,5 @@ export class AppointmentComponent {
     verInconsistencias(){
       this.mostrarInconsistencias = !this.mostrarInconsistencias
     }
+
 }

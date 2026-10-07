@@ -1,6 +1,5 @@
 <div class="container mt-4">
 
-<h3>Mis citas</h3>
 <!--<pre>{{ citas | json }}</pre> -->
 
     <div class="card mt-4">
@@ -75,6 +74,34 @@
         </div>
     </div>
 
+    <h3 class="mt-4">Mis citas</h3>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover mt-3">
+
+            <thead class="table-dark">
+                <tr>
+                    <th>Especialidad</th>
+                    <th>Especialista</th>
+                    <th>Estado</th>
+                    <th>Fecha</th>
+                    <th>Observación</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @for (cita of citas; track cita.id) {
+                    <tr>
+                        <td>{{ cita.especialidad }}</td>
+                        <td>{{ cita.especialista }}</td>
+                        <td>{{ cita.estado }}</td>
+                        <td>{{ cita.fecha_cita }}</td>
+                        <td>{{ cita.observacion }}</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>
 
 

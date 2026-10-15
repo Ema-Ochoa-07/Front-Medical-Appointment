@@ -1,1 +1,165 @@
-<p>login works!</p>
+
+<div class="login-page">
+
+  <!-- Contiene toda la página -->
+  <div class="container-fluid min-vh-100">
+
+    <!-- Contiene los dos paneles -->
+    <div class="row min-vh-100">
+
+      <!-- Panel visual izquierdo -->
+      <div class="col-lg-7 d-none d-lg-flex login-banner">
+
+        <!-- Agrupa todo el contenido del panel izquierdo -->
+        <div class="banner-content">
+
+          <!-- Marca de la plataforma -->
+          <div class="brand">
+            <div class="brand-icon">+</div>
+            <span>TurniApp</span>
+          </div>
+
+          <!-- Textos -->
+          <div class="banner-message">
+
+            <!-- Mensaje de Bienvenida -->
+            <span class="welcome-label">
+              MENOS ESPERA, MÁS ATENCIÓN!!!
+            </span>
+
+            <h1>
+              Un turno a la vez, cada espera tiene su momento.
+            </h1>
+
+            <p>
+              Monitoriza turnos, gestiona citas y pacientes 
+              desde un solo lugar, de manera fácil rápiday segura.
+            </p>
+
+            <!-- Características del programa -->
+            <div class="banner-features">
+
+              <div class="feature-item">
+                <span class="feature-check">✓</span>
+                Gestión de citas
+              </div>
+
+              <div class="feature-item">
+                <span class="feature-check">✓</span>
+                Información centralizada
+              </div>
+
+              <div class="feature-item">
+                <span class="feature-check">✓</span>
+                Acceso seguro
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Pie del panel izquierdo -->
+          <div class="banner-footer">
+            <span>Ing Enmanuel Ochoa.</span>
+            <span>© 2026 TurniApp</span>
+          </div>
+
+        </div>
+      </div>
+
+
+       
+        <!-- Panel derecho: inicio de sesión -->
+        <div class="col-12 col-lg-5 login-panel">
+          
+            <!-- Logo visible solo cuando se oculta el panel izquierdo -->
+            <div class="mobile-brand d-lg-none">
+                <div class="brand-icon">+</div>
+                <span>TurniApp</span>
+            </div>
+
+            <!-- Contenedor del formulario -->
+            <div class="login-card">
+
+                <!-- Encabezado -->
+                <div class="login-heading">
+
+                    <span class="section-label">
+                        ACCESO A LA PLATAFORMA
+                    </span>
+
+                    <h2>¡Qué bueno verte!</h2>
+
+                    <p>Ingresa tus credenciales para continuar.</p>
+                </div>
+                
+                <!-- Formulario de inicio de sesión -->
+                <form>
+
+                    <!-- Campo de usuario -->
+                    <div class="mb-4">
+
+                        <label for="username" class="form-label">
+                        Nombre de usuario
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <input
+                                type="text"
+                                class="form-control custom-input"
+                                id="username"
+                                name="username"
+                                placeholder="Ingresa tu usuario"
+                                autocomplete="username"
+                                required
+                            />
+                        </div>
+                    </div>
+
+                    <!-- Campo de contraseña -->
+                    <div class="mb-3">
+
+                        <label for="clave" class="form-label">
+                        Contraseña
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <input
+                                type="password"
+                                class="form-control custom-input"
+                                id="clave"
+                                name="clave"
+                                placeholder="Ingresa tu contraseña"
+                                autocomplete="current-password"
+                                required
+                            />
+                        </div>
+                    </div>
+
+                    
+                    <!-- Botón para iniciar sesión -->
+                    <button type="submit" class="btn login-button w-100">
+                    Iniciar sesión
+                    <span class="button-arrow">→</span>
+                    </button>
+
+                </form>
+
+                
+                <!-- Nota de ayuda -->
+                <div class="login-note">
+
+                    <span class="note-icon">i</span>
+                        Si tienes problemas para ingresar, contacta al administrador
+                        del sistema.
+                </div>
+
+
+            </div>
+        </div>
+
+
+    </div>
+  </div>
+</div>

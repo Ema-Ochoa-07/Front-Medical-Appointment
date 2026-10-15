@@ -1,11 +1,10 @@
 import { ChangeDetectorRef, Component, ElementRef, ViewChild } from '@angular/core';
 import { AppointmentService } from '../../services/appointment.service';
 import { Appointment } from '../../interfaces/appointment.interface';
-import { JsonPipe } from '@angular/common';
 import { error } from 'node:console';
 
 @Component({
-  imports: [JsonPipe],
+  imports: [],
   selector: 'app-appointment',
   styleUrl: './appointment.css',
   templateUrl: './appointment.html',

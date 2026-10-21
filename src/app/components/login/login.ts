@@ -23,8 +23,9 @@ export class LoginComponent {
       next:(respuesta) =>{
         
         console.log('Inicio de sesión exitoso:', respuesta)
-        localStorage.setItem('token', respuesta.token)
-        localStorage.setItem('user', JSON.stringify(respuesta.user))
+        //Se lo pasó al auth para que el interceptor solo lo saque de un solo lugar
+        //localStorage.setItem('token', respuesta.token)
+        //localStorage.setItem('user', JSON.stringify(respuesta.user))
       },
       error: (error) =>{
         console.log('Error al iniiciar sesión:', error)

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { LoginResponse } from '../interfaces/loginResponse';
 
 @Injectable({
     providedIn:'root'
@@ -14,6 +15,6 @@ export class Auth {
     ) {}
 
     login(username: string, clave: string){
-        return this.http.post(`${this.baseUrl}/users/login`,{username, clave})
+        return this.http.post<LoginResponse>(`${this.baseUrl}/users/login`,{username, clave})
     }
 }

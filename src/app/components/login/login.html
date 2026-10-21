@@ -93,7 +93,7 @@
                 </div>
                 
                 <!-- Formulario de inicio de sesión -->
-                <form>
+                <form (ngSubmit)="iniciarSesion()">
 
                     <!-- Campo de usuario -->
                     <div class="mb-4">
@@ -109,6 +109,7 @@
                                 class="form-control custom-input"
                                 id="username"
                                 name="username"
+                                [(ngModel)]="username"
                                 placeholder="Ingresa tu usuario"
                                 autocomplete="username"
                                 required
@@ -130,6 +131,7 @@
                                 class="form-control custom-input"
                                 id="clave"
                                 name="clave"
+                                [(ngModel)] = "clave"
                                 placeholder="Ingresa tu contraseña"
                                 autocomplete="current-password"
                                 required

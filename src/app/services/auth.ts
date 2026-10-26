@@ -23,4 +23,8 @@ export class Auth {
             })
         )
     }
+
+    obtenerToken(): string | null{
+        return localStorage.getItem('miToken')
+    }
 }

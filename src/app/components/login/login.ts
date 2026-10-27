@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Auth } from '../../services/auth';
-import { error } from 'console';
+import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   imports: [ FormsModule ],
@@ -14,18 +15,23 @@ export class LoginComponent {
   username: string = ''
   clave: string = ''
   
-  constructor( private auth: Auth ){}
+  constructor( 
+    private auth: Auth,
+    private route: ActivatedRoute,
+    private router: Router
+   ){}
 
   
   iniciarSesion(): void{
 
     this.auth.login(this.username, this.clave).subscribe({
-      next:(respuesta) =>{
-        
+      next:(respuesta) =>{        
         console.log('Inicio de sesión exitoso:', respuesta)
-        //Se lo pasó al auth para que el interceptor solo lo saque de un solo lugar
-        //localStorage.setItem('token', respuesta.token)
-        //localStorage.setItem('user', JSON.stringify(respuesta.user))
+        
+        //Atrapa la URL actual para loggear desde ahí o si es solo login redirigir a home
+        const returnUrl = this.route.snapshot.queryParams['returnUrlAuth'] || '/home'
+        this.router.navigateByUrl(returnUrl)
+
       },
       error: (error) =>{
         console.log('Error al iniiciar sesión:', error)
